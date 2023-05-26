@@ -1,0 +1,25 @@
+#
+# Stu file for generating the erklaerung from LaTeX.
+#
+@all: erklaerung.pdf;
+
+erklaerung.pdf:	erklaerung.tex
+{
+    rm -rf *.aux *.lo? *.out *.bbl *.brf *.blg *.nl? *.ilg *.toc
+    pdflatex -shell-escape -file-line-error -halt-on-error erklaerung.tex
+    pdflatex -shell-escape -file-line-error -halt-on-error erklaerung.tex
+}
+
+@small: erklaerung_small.pdf;
+
+erklaerung_small.pdf: erklaerung.pdf
+{
+    gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/printer -dColorImageResolution=180 -dNOPAUSE -dQUIET -dBATCH -sOutputFile=erklaerung_small.pdf erklaerung.pdf
+
+}
+
+@clear:
+{
+    rm -rf *.aux *.lo? *.out *.bbl *.brf *.blg *.nl? *.ilg *.toc
+    rm -rf erklaerung.pdf erklaerung_small.pdf
+}
