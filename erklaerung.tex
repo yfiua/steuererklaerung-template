@@ -1,0 +1,47 @@
+\documentclass[12pt]{article}
+
+\usepackage{pdfpages}
+\usepackage{tikz}
+\usepackage{parskip}
+\usepackage[colorlinks=true, allcolors=blue, linktocpage=true]{hyperref}
+
+\title{Steuererklärung 20XX}
+\author{INSERT NAME 1\footnote{insert@email.address}, INSERT NAME 2, ...}
+
+\begin{document}
+\maketitle
+
+\tableofcontents
+
+\clearpage
+\section{Allgemeine Angaben}
+
+% insert PDFs like this
+\cleardoublepage\phantomsection
+\addcontentsline{toc}{subsection}{Steuerbescheid 20XX}
+\includepdf[pages={1-}]{Docs/0a_Steuerbescheid_20XX.pdf}
+
+\cleardoublepage\phantomsection
+\section{Einkommensnachweise}
+
+\clearpage
+\section{Werbungskosten aus nichtselbständiger Arbeit}
+
+% insert PDFs and add comments like this
+\cleardoublepage\phantomsection
+\addcontentsline{toc}{subsection}{Steuerberatungskosten}
+\includepdf[pagecommand={\begin{tikzpicture}[remember picture, overlay]\node at (13,-6.8) {nur 200€ bezahlt};\end{tikzpicture}}]{Docs/2a_Steuerberatungskosten.pdf}
+
+\clearpage
+\section{Kinder}
+
+\clearpage
+\section{Sonderausgaben}
+
+\clearpage
+\section{Außergewöhnliche Belastungen}
+
+\clearpage
+\section{Andere Unterlagen}
+
+\end{document}
